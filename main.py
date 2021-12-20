@@ -31,11 +31,11 @@ while game_running:
         scoreboard.increment_score()
         snake.to_grow += 1
     if abs(snake.head.xcor()) > 300 or abs(snake.head.ycor()) > 300:
-        scoreboard.game_over()
-        game_running = False
+        scoreboard.reset_score()
+        snake.reset_snake()
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            scoreboard.game_over()
-            game_running = False
+            scoreboard.reset_score()
+            snake.reset_snake()
 
 screen.exitonclick()

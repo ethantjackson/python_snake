@@ -11,16 +11,23 @@ class Snake:
         self.segment_size = 20
         self.starting_length = 3
         self.starting_positions = []
-        self.segments = []
-        self.to_grow = 0
-
         for i in range(self.starting_length):
             self.starting_positions.append((-i * self.segment_size, 0))
+        self.segments = []
+        self.to_grow = 0
+        self.head = None
+        self.init_snake()
 
+    def init_snake(self):
         for position in self.starting_positions:
             self.init_segment(position)
-
         self.head = self.segments[0]
+
+    def reset_snake(self):
+        for seg in self.segments:
+            seg.ht()
+        self.segments.clear()
+        self.init_snake()
 
     def init_segment(self, position):
         t = Turtle()
